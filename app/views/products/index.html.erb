@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="row">
+    <h1 class="col-12">Products</h1>
+    <% @products.each do |product| %>
+    <article class="col-12">
+      <h2><%=product.title %></h2>
+      <p><%=raw product.description %></p>
+    </article>
+    <% end %>
+
+
+<%= link_to 'New Product', new_product_path %>
+  </div>
+</div>

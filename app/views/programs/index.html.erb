@@ -1,0 +1,20 @@
+<div class="container">
+  <section class="row">
+    <h1 class="col-12"><%= t(:intro_program) %></h1>
+    <% @programs.each do |program| %>
+      <article class="col-12">
+        <h2><%=program.title %></h2>
+        <p><%=raw program.description %>
+        </p>
+        <dl>
+          <dt><%= t(:program) %></dt>
+          <dd><%= t(:ror) %></dd>
+          <dt><%= t(:source) %></dt>
+          <dd><%= link_to t(:source), '' %></dd>
+          <dt><%= t(:service_site) %></dt>
+          <dd><%= link_to t(:survey_program), 'https://survey.sleepinglion.pe.kr' %></dd>
+        </dl>
+      </article>
+    <% end %>
+  </section>
+</div>

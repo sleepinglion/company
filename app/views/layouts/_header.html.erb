@@ -1,0 +1,79 @@
+<header>
+  <div class="container">
+    <div class="row">
+      <h1 class="col-12 col-lg-3">
+        <%= link_to root_path do %>
+          <span class="logo"><%= t(:service_name) %></span>
+        <% end %>
+      </h1>
+      <nav class="col-12 col-lg-9">
+        <ul class="nav nav-pills">
+          <li class="sl-dropdown
+            <% if params[:controller] == 'intro' %> active
+            <% end %>">
+            <%= link_to intro_company_path do %>
+              <%= t(:menu_intro) %>
+            <% end %>
+            <ul class="sl-dropdown-menu intro_menu">
+              <li
+              <% if current_page?(intro_company_path) %> class="active"
+              <% end %>><%= link_to t(:submenu_intro1), intro_company_path %></li>
+              <li
+              <% if current_page?(intro_service_path) %> class="active"
+              <% end %>><%= link_to t(:submenu_intro2), intro_service_path %></li>
+            </ul>
+          </li>
+          <li class="sl-dropdown
+            <% if params[:controller] == 'programs' %> active
+            <% end %>">
+            <%= link_to programs_path do %>
+              <%= t(:program,scope:[:activerecord,:models]) %>
+            <% end %>
+            <ul class="sl-dropdown-menu intro_menu">
+              <li
+                <% if current_page?(programs_path) %> class="active"
+                <% end %>><%= link_to t(:program,scope:[:activerecord,:models]), programs_path %></li>
+              <li
+                <% if current_page?(reports_path) %> class="active"
+                <% end %>><%= link_to t(:report,scope:[:activerecord,:models]), reports_path %></li>
+            </ul>
+          </li>
+          <li class="sl-dropdown
+            <% if params[:controller] == 'faqs' || params[:controller] == 'contacts' %> active
+            <% end %>">
+            <%= link_to faqs_path do %>
+              <%= t(:menu_support) %>
+            <% end %>
+            <ul class="sl-dropdown-menu">
+              <li
+              <% if current_page?(faqs_path) %> class="active"
+              <% end %>><%= link_to t(:menu_faq), faqs_path %></li>
+              <li
+              <% if current_page?(contacts_path) %> class="active"
+              <% end %>><%= link_to t(:menu_contact), contacts_path %></li>
+            </ul>
+          </li>
+          <% if user_signed_in? %>
+            <li class="red
+              <% if params[:controller] == 'orders' %> active
+              <% end %>" data-turbolinks="false">
+              <%= link_to new_order_path do %><%= t(:menu_order) %>
+              <% end %>
+            </li>
+            <li class="blue
+              <% if (params[:controller] == 'users' && (params['action'] == 'index' || params['action'] == 'bye' || params['action'] == 'edit')) || params[:controller] == 'reports' %> active
+              <% end %>"><%= link_to users_path do %><%= t(:menu_my_page) %>
+              <% end %></li>
+          <% else %>
+            <li class="red
+              <% if params[:controller] == 'orders' %> active
+              <% end %>" data-turbolinks="false">
+              <%= link_to new_order_path do %><%= t(:menu_order) %>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
